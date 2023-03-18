@@ -8,6 +8,7 @@ import {
   getDownloadURL,
   ref as fileReff,
 } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -17,6 +18,7 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGE_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
 };
+
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 export const auth = getAuth(app);
@@ -31,7 +33,6 @@ export const upload = async (file: File | null, currentUser: any) => {
 
     uploadBytes(fileRef, file);
     const snapshot = await uploadBytes(fileRef, file);
-    console.log("Uploaded a blob or file!");
     const downloadUrl = await getDownloadURL(snapshot.ref);
     localStorage.setItem("profile", downloadUrl);
     return downloadUrl;
