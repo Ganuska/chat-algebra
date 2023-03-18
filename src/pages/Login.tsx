@@ -10,6 +10,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLogin((old) => {
       const name = e.target.name;
@@ -24,7 +26,7 @@ const Login = () => {
       await logIn(login.email, login.password);
       navigate("/Home");
     } catch (err: any) {
-      console.log(err.message);
+      setError(err.message);
     }
   };
 
@@ -58,6 +60,7 @@ const Login = () => {
             onChange={handleChange}
             className="max-w-full text-center h-10 focus:outline-0 border-0 border-b-2 rounded-md"
           />
+          {error && <p className="text-red-500 text-center">{error}</p>}
           <button className=" m-5 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 ">
             Log In
           </button>

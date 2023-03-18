@@ -10,7 +10,7 @@ type Props = {
 const Send = (props: Props) => {
   return (
     <div className="flex pr-5  justify-end">
-      <div className="m-5 border rounded-lg bg-blue-600 border-none p-2 text-right max-w-lg">
+      <div className="m-5 border rounded-lg bg-blue-600 border-none p-2 text-right max-w-[50%] md:max-w-lg">
         <p className="text-stone-800 font-extrabold text-right mb-2">
           {props.name}
         </p>

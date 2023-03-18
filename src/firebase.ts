@@ -22,6 +22,7 @@ const storage = getStorage(app);
 export const auth = getAuth(app);
 export const db = getDatabase(app);
 export const chatRef = ref(db, "chat");
+export const UserRef = ref(db, "users");
 export default app;
 
 export const upload = async (file: File | null, currentUser: any) => {
